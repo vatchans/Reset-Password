@@ -27,6 +27,7 @@ export default function Signup() {
     var [Mobile,setmobile]=useState('')
     var[Username,setname]=useState('')
     let handlesubmit = async() => {
+      event.preventDefault();
       setErrorMessage(false)
 
         try{
