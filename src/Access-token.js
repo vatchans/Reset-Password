@@ -11,7 +11,8 @@ function Accesstoken() {
   const[showerr,seterr]=useState("")
   const [incoreectpwd,setErrorMessage] = React.useState(false);
   let navigate=useNavigate()
-  let handlesubmit = async() => {
+  let handlesubmit = async(event) => {
+      event.preventDefault();
     setErrorMessage(false)
   try{
   let res=await axios.post("https://reset-password-oydo.onrender.com/users/Autenticate-code",
