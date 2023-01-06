@@ -12,6 +12,7 @@ function Resetpassword() {
     const [incoreectpwd,setErrorMessage] = React.useState(false);
     const[showerr,seterr]=useState("")
     let handlesubmit = async() => {
+        event.preventDefault();
         setErrorMessage(false)
     try{
     let res=await axios.post("https://reset-password-oydo.onrender.com/users/reset-password",
