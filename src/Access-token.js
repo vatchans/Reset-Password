@@ -15,7 +15,7 @@ function Accesstoken() {
       event.preventDefault();
     setErrorMessage(false)
   try{
-  let res=await axios.post("https://reset-password-oydo.onrender.com/users/Autenticate-code",
+  let res=await axios.post("https://reset-password-oydo.onrender.com/Autenticate-code",
   {
       code,
 
