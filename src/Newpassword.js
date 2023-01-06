@@ -24,7 +24,7 @@ function Newpassword() {
     let[cPassword,setcpwd]=useState('')
     const [incoreectpwd,setErrorMessage] = React.useState(false);
     const[showerr,seterr]=useState("")
-    let handlesubmit = async() => {
+    let handlesubmit = async(event) => {
       event.preventDefault();
       setErrorMessage(false)
         try{
