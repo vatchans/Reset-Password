@@ -84,7 +84,7 @@ router.post('/reset-password', async (req, res) => {
       });
       let info = await transporter.sendMail({
         from: 'vatchans@gmail.com',
-        to: "juzslayy@gmail.com",
+        to: req.body.Email
         subject: "Password reset Link", 
         html:generateEmail(auth)
         , 
