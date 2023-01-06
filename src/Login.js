@@ -27,7 +27,8 @@ function Login() {
     };
     var [Email, setemail] = useState('')
     var [Password, setpwd] = useState('')
-    let handlesubmit = async() => {
+    let handlesubmit = async() => {\
+      event.preventDefault();
       setErrorMessage(false)
       setErrorMessage2(false)
         try{
