@@ -24,12 +24,12 @@ function Newpassword() {
     let[cPassword,setcpwd]=useState('')
     const [incoreectpwd,setErrorMessage] = React.useState(false);
     const[showerr,seterr]=useState("")
-    let handlesubmit = async(event) => {
-      event.preventDefault();
+    let handlesubmit = async(e) => {
+      e.preventDefault();
       setErrorMessage(false)
         try{
             if(Password===cPassword){
-        let res=await axios.post(`https://reset-password-oydo.onrender.com/users/new-password/${email}`,
+        let res=await axios.post(`https://reset-password-oydo.onrender.com/new-password/${email}`,
         {
             Password
 
@@ -100,7 +100,7 @@ function Newpassword() {
           />
         </FormControl>
         <Form.Group className="text-center w-35 mb-3 mt-3" controlId="formBasicEmail">
-                <button className='button' onClick={()=>handlesubmit()}>
+                <button className='button' onClick={(e)=>handlesubmit(e)}>
                     Change password
                 </button>
                 {incoreectpwd?<div className="error mt-2">{showerr} <i class="fa-solid fa-circle-exclamation"></i></div>:<></>}
