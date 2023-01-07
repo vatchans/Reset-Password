@@ -11,8 +11,8 @@ function Accesstoken() {
   const[showerr,seterr]=useState("")
   const [incoreectpwd,setErrorMessage] = React.useState(false);
   let navigate=useNavigate()
-  let handlesubmit = async(event) => {
-      event.preventDefault();
+  let handlesubmit = async(e) => {
+      e.preventDefault();
     setErrorMessage(false)
   try{
   let res=await axios.post("https://reset-password-oydo.onrender.com/Autenticate-code",
@@ -53,7 +53,7 @@ return <> <div className='Container-fluid g' style={{ display: 'flex', justifyCo
 </Box>
 
     <Form.Group className="text-center w-35 mb-3 mt-4" controlId="formBasicEmail">
-            <button variant="primary"className='button' onClick={()=>handlesubmit()}>
+            <button variant="primary"className='button' onClick={(e)=>handlesubmit(e)}>
                 verify
             </button>
             </Form.Group>
