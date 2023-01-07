@@ -19,8 +19,8 @@ export default function Signup() {
     const[showerr,seterr]=useState("")
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const [incoreectpwd,setErrorMessage] = React.useState(false);
-    const handleMouseDownPassword = (event) => {
-      event.preventDefault();
+    const handleMouseDownPassword = (e) => {
+      e.preventDefault();
     };
     var [Email, setemail] = useState('')
     var [Password, setpwd] = useState('')
@@ -116,7 +116,7 @@ export default function Signup() {
         </FormControl>
       
         <Form.Group className="text-center w-35 mb-3" controlId="formBasicEmail">
-                <button className="btn"style={{"width":"20ch"}} variant="primary" onClick={()=>handlesubmit()}
+                <button className="btn"style={{"width":"20ch"}} variant="primary" onClick={(e)=>handlesubmit(e)}
             >
                     Register
                 </button>
