@@ -26,12 +26,12 @@ export default function Signup() {
     var [Password, setpwd] = useState('')
     var [Mobile,setmobile]=useState('')
     var[Username,setname]=useState('')
-    let handlesubmit = async(event) => {
-      event.preventDefault();
+    let handlesubmit = async(e) => {
+      e.preventDefault();
       setErrorMessage(false)
 
         try{
-        let res=await axios.post("https://reset-password-oydo.onrender.com/users/Signup",
+        let res=await axios.post("https://reset-password-oydo.onrender.com/Signup",
         {
             Email,
             Password,
