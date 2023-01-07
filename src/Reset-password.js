@@ -15,7 +15,7 @@ function Resetpassword() {
         e.preventDefault();
         setErrorMessage(false)
     try{
-    let res=await axios.post("https://reset-password-oydo.onrender.com/users/reset-password",
+    let res=await axios.post("https://reset-password-oydo.onrender.com/reset-password",
     {
         Email,
 
