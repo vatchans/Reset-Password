@@ -12,13 +12,14 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import {toast } from 'react-toastify';
 export default function Signup() {
     const [showPassword, setShowPassword] = React.useState(false);
     const[showerr,seterr]=useState("")
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const [incoreectpwd,setErrorMessage] = React.useState(false);
+    const navigate=useNavigate()
     const handleMouseDownPassword = (e) => {
       e.preventDefault();
     };
@@ -29,6 +30,7 @@ export default function Signup() {
     let handlesubmit = async(e) => {
       e.preventDefault();
       setErrorMessage(false)
+      
 
         try{
         let res=await axios.post("https://reset-password-oydo.onrender.com/Signup",
@@ -42,10 +44,12 @@ export default function Signup() {
         })
          if(res.status===201){
           toast.success(res.data)
+          navigate('/')
+
          }
-         else if(res.status===400){
-           
-            
+         else{
+           seterr(res.data)
+           setErrorMessage(true)
          }
         }
         catch(error){
@@ -68,7 +72,7 @@ export default function Signup() {
       noValidate
       autoComplete="off"
     >
-      <TextField id="outlined-basic" label="Username" variant="outlined"onChange={(e)=>setname(e.target.value)} />
+      <TextField id="outlined-basic" label="Username" variant="outlined"required onChange={(e)=>setname(e.target.value)} />
     </Box>
             <Box
       component="form"
@@ -78,7 +82,7 @@ export default function Signup() {
       noValidate
       autoComplete="off"
     >
-      <TextField id="outlined-basic" label="Email" variant="outlined"onChange={(e)=>setemail(e.target.value)} />
+      <TextField id="outlined-basic" label="Email" variant="outlined" required onChange={(e)=>setemail(e.target.value)} />
     </Box>
     {incoreectpwd?<div className="error mt-2">{showerr} <i class="fa-solid fa-circle-exclamation"></i></div>:<></>} 
                 <FormControl 
@@ -87,6 +91,7 @@ export default function Signup() {
           <OutlinedInput
             id="outlined-adornment-password"
             type={showPassword ? 'text' : 'password'}
+            required
             onChange={(e)=>setpwd(e.target.value)}
             endAdornment={
               <InputAdornment position="end">
@@ -111,12 +116,12 @@ export default function Signup() {
       noValidate
       autoComplete="off"
     >
-      <TextField id="outlined-basic" label="Mobile" variant="outlined"onChange={(e)=>setmobile(e.target.value)} />
+      <TextField id="outlined-basic" label="Mobile" variant="outlined"  required onChange={(e)=>setmobile(e.target.value)} />
     </Box> 
         </FormControl>
       
         <Form.Group className="text-center w-35 mb-3" controlId="formBasicEmail">
-                <button className="btn"style={{"width":"20ch"}} variant="primary" onClick={(e)=>handlesubmit(e)}
+                <button type="submit" className="btn"style={{"width":"20ch"}} variant="primary" required  onClick={(e)=>handlesubmit(e)}
             >
                     Register
                 </button>
