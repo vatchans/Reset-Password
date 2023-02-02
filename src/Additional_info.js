@@ -16,7 +16,7 @@ let handlesubmit=async(e)=>{
 
    try{
     
-     let res=await axios.post(`http://localhost:8000/users/addtional/${email}`,{
+     let res=await axios.post(`https://reset-password-oydo.onrender.com/addtional/${email}`,{
         dob,
         age,
         contact
