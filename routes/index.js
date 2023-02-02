@@ -108,6 +108,35 @@ router.post('/reset-password', async (req, res) => {
     res.status(500).send({message:"internal server error"})
   }
 })
+router.post('/addtional/:Email',async(req,res)=>{
+  try{
+    let body=await userModel.findOne({Email:req.params.Email})
+   
+    let user=await userModel.updateOne({Email:req.params.Email},{
+      $set:{
+       age:req.body.age,
+       Dob:req.body.dob,
+       contact:req.body.contact
+      }
+    })
+    console.log(body.Username)
+    res.status(201).send({msg:"Additional information added",})
+  }
+  catch(err){
+    res.status(500).send({msg:"Error",err})
+  }
+})
+router.get('/info/:Email',async(req,res)=>{
+  try{
+    let user=await userModel.findOne({ Email: req.params.Email })
+    res.status(200).send(user)
+    console.log(user)
+  }
+  
+  catch(error){
+    res.status(500).send(error)
+  }
+})
 router.post('/Autenticate-code', async (req, res) => {
   try {
     let existinguser = await userModel.findOne({ Auth: req.body.code })
