@@ -14,7 +14,7 @@ let [contact,setContact]=useState('')
     // e.preventDefault();
     let email= await localStorage.getItem("Email");
     try{
-      let res=await axios.get(`http://localhost:8000/users/info/${email}`)
+      let res=await axios.get(`http://localhost:8000/info/${email}`)
       if(res.status===200){
         let date=res.data.Dob.split('')
         let result=date.splice(0,10).join('')
