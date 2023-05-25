@@ -48,11 +48,9 @@ router.post('/Signin', async (req, res) => {
         let token = await Createtoken({
           Email: user.Email,
           Username:user.Username,
-          Password: user.Password,
           Mobile: user.Mobile,
         })
-        Decodetoken(token)
-        res.status(200).send({ message: "login Sucessfull"})
+        res.status(200).send({ message: "login Sucessfull".token})
         
       }
     
